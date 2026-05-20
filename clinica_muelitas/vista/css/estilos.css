@@ -1,0 +1,764 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap');
+
+:root {
+	--color-fondo: #eef5f4;
+	--color-superficie: #ffffff;
+	--color-primario: #1a7a78;
+	--color-primario-oscuro: #145f5d;
+	--color-acento: #e8a87c;
+	--color-acento-suave: #f7e8dc;
+	--color-texto: #2a3b3a;
+	--color-texto-suave: #5c6f6e;
+	--color-borde: #d4e4e3;
+	--color-exito: #2d8a6e;
+	--sombra-suave: 0 4px 24px rgba(26, 122, 120, 0.08);
+	--sombra-tarjeta: 0 2px 12px rgba(42, 59, 58, 0.06);
+	--radio: 10px;
+	--ancho-max: 1020px;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	min-height: 100vh;
+	font-family: 'DM Sans', 'Segoe UI', Tahoma, sans-serif;
+	font-size: 1rem;
+	line-height: 1.55;
+	color: var(--color-texto);
+	background-color: var(--color-fondo);
+	background-image:
+		radial-gradient(circle at 100% 0%, rgba(232, 168, 124, 0.12) 0%, transparent 42%),
+		radial-gradient(circle at 0% 100%, rgba(26, 122, 120, 0.08) 0%, transparent 40%);
+}
+
+#contenedor {
+	display: grid;
+	grid-template-columns: 220px 1fr;
+	grid-template-rows: auto 1fr auto;
+	grid-template-areas:
+		"cabecera cabecera"
+		"menu contenido"
+		"pie pie";
+	max-width: var(--ancho-max);
+	margin: 1.5rem auto 2rem;
+	background: var(--color-superficie);
+	border-radius: 14px;
+	box-shadow: var(--sombra-suave);
+	border: 1px solid var(--color-borde);
+	overflow: hidden;
+}
+
+/* —— Cabecera —— */
+#encabezado {
+	grid-area: cabecera;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1rem;
+	background: linear-gradient(125deg, var(--color-primario) 0%, #1f9491 55%, #2aa8a4 100%);
+	padding: 1.35rem 1.75rem;
+	position: relative;
+	overflow: hidden;
+}
+
+#encabezado::before {
+	content: '';
+	position: absolute;
+	right: -40px;
+	top: -40px;
+	width: 200px;
+	height: 200px;
+	border-radius: 50%;
+	background: rgba(255, 255, 255, 0.06);
+	pointer-events: none;
+}
+
+#encabezado::after {
+	content: '';
+	position: absolute;
+	left: 30%;
+	bottom: -60px;
+	width: 160px;
+	height: 160px;
+	border-radius: 50%;
+	background: rgba(232, 168, 124, 0.15);
+	pointer-events: none;
+}
+
+#encabezado h1 {
+	display: none;
+}
+
+.marca {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+	position: relative;
+	z-index: 1;
+}
+
+.logo-clinica {
+	flex-shrink: 0;
+	width: 56px;
+	height: 56px;
+	filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.12));
+}
+
+.logo-clinica svg {
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+
+.marca-texto {
+	margin: 0;
+}
+
+.nombre-clinica {
+	margin: 0;
+	font-family: 'Fraunces', Georgia, serif;
+	font-size: 1.75rem;
+	font-weight: 700;
+	color: #fff;
+	letter-spacing: -0.02em;
+	line-height: 1.2;
+}
+
+.tagline {
+	margin: 0.2rem 0 0;
+	font-size: 0.9rem;
+	color: rgba(255, 255, 255, 0.88);
+	font-weight: 400;
+}
+
+/* —— Menú lateral —— */
+#menu {
+	grid-area: menu;
+	float: none;
+	width: auto;
+	margin: 0;
+	padding: 1.25rem 0.75rem;
+	background: #f6faf9;
+	border-right: 1px solid var(--color-borde);
+	list-style: none;
+}
+
+#menu ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+#menu li {
+	margin: 0 0 0.35rem;
+	border: none;
+	background: transparent;
+	font-size: 0.92rem;
+	text-align: left;
+	line-height: 1.3;
+}
+
+#menu a {
+	display: block;
+	padding: 0.65rem 1rem;
+	text-decoration: none;
+	color: var(--color-texto);
+	border-radius: 8px;
+	font-weight: 500;
+	transition: background 0.15s ease, color 0.15s ease;
+}
+
+#menu a:hover {
+	background: var(--color-acento-suave);
+	color: var(--color-primario-oscuro);
+}
+
+#menu a.activo {
+	background: var(--color-primario);
+	color: #fff;
+}
+
+#menu li :hover,
+#menu li :active {
+	background: transparent;
+}
+
+/* —— Contenido —— */
+#contenido {
+	grid-area: contenido;
+	float: none;
+	border: none;
+	margin: 0;
+	padding: 1.75rem 2rem 2rem;
+	text-align: left;
+	min-height: 380px;
+}
+
+h2 {
+	font-family: 'Fraunces', Georgia, serif;
+	font-size: 1.45rem;
+	font-weight: 600;
+	color: var(--color-primario-oscuro);
+	margin: 0 0 1.25rem;
+	padding-bottom: 0.65rem;
+	border-bottom: 2px solid var(--color-acento);
+}
+
+h2 + p,
+#contenido > p {
+	color: var(--color-texto-suave);
+	margin-top: 0;
+}
+
+#contenido > ul:not(#menu ul) {
+	padding-left: 1.25rem;
+	color: var(--color-texto-suave);
+}
+
+#contenido > ul:not(#menu ul) li {
+	margin-bottom: 0.35rem;
+}
+
+/* —— Inicio: tarjetas de acceso —— */
+.bienvenida {
+	max-width: 640px;
+}
+
+.bienvenida .intro {
+	font-size: 1.05rem;
+	margin-bottom: 1.5rem;
+}
+
+.tarjetas-accion {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+	gap: 1rem;
+	margin-top: 1.5rem;
+}
+
+.tarjeta-accion {
+	display: flex;
+	flex-direction: column;
+	padding: 1.15rem 1.25rem;
+	background: #f6faf9;
+	border: 1px solid var(--color-borde);
+	border-radius: var(--radio);
+	text-decoration: none;
+	color: inherit;
+	transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+.tarjeta-accion:hover {
+	border-color: var(--color-primario);
+	box-shadow: var(--sombra-tarjeta);
+	transform: translateY(-2px);
+}
+
+.tarjeta-accion strong {
+	font-size: 1rem;
+	color: var(--color-primario-oscuro);
+	margin-bottom: 0.35rem;
+}
+
+.tarjeta-accion span {
+	font-size: 0.85rem;
+	color: var(--color-texto-suave);
+}
+
+/* —— Formularios y tablas —— */
+form table,
+#contenido table {
+	width: 100%;
+	max-width: 520px;
+	border-collapse: separate;
+	border-spacing: 0;
+	margin: 0.5rem 0 1rem;
+	font-size: 0.95rem;
+}
+
+form table td,
+#contenido table td,
+#contenido table th {
+	padding: 0.55rem 0.75rem;
+	vertical-align: middle;
+	text-align: left;
+}
+
+form table tr td:first-child {
+	width: 42%;
+	font-weight: 500;
+	color: var(--color-texto-suave);
+	padding-right: 1rem;
+}
+
+#contenido table th {
+	background: var(--color-primario);
+	color: #fff;
+	font-weight: 600;
+	font-size: 0.88rem;
+	text-transform: uppercase;
+	letter-spacing: 0.04em;
+}
+
+#contenido table th:first-child {
+	border-radius: 8px 0 0 0;
+}
+
+#contenido table th:last-child {
+	border-radius: 0 8px 0 0;
+}
+
+#contenido table tr:nth-child(even) td {
+	background: #f8fbfa;
+}
+
+#contenido table tr:hover td {
+	background: #eef7f6;
+}
+
+input[type="text"],
+input[type="button"],
+input[type="submit"],
+select,
+textarea {
+	font-family: inherit;
+	font-size: 0.95rem;
+}
+
+input[type="text"],
+select {
+	width: 100%;
+	max-width: 280px;
+	padding: 0.5rem 0.75rem;
+	border: 1px solid var(--color-borde);
+	border-radius: 6px;
+	background: #fff;
+	color: var(--color-texto);
+	transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+input[type="text"]:focus,
+select:focus {
+	outline: none;
+	border-color: var(--color-primario);
+	box-shadow: 0 0 0 3px rgba(26, 122, 120, 0.15);
+}
+
+input[type="button"],
+input[type="submit"] {
+	padding: 0.55rem 1.25rem;
+	border: none;
+	border-radius: 6px;
+	font-weight: 600;
+	cursor: pointer;
+	transition: background 0.15s ease, transform 0.1s ease;
+}
+
+input[type="button"] {
+	background: var(--color-acento-suave);
+	color: var(--color-primario-oscuro);
+}
+
+input[type="button"]:hover {
+	background: var(--color-acento);
+	color: #fff;
+}
+
+input[type="submit"] {
+	background: var(--color-primario);
+	color: #fff;
+	margin-top: 0.5rem;
+}
+
+input[type="submit"]:hover {
+	background: var(--color-primario-oscuro);
+}
+
+#contenido a {
+	color: var(--color-primario);
+	font-weight: 500;
+	text-decoration: none;
+}
+
+#contenido a:hover {
+	text-decoration: underline;
+	color: var(--color-primario-oscuro);
+}
+
+#paciente .tabla-resultados,
+#paciente2 .tabla-resultados,
+#paciente3 .tabla-resultados {
+	max-width: 100%;
+	margin-top: 0.5rem;
+}
+
+#paciente,
+#paciente2,
+#paciente3 {
+	margin: 0.75rem 0;
+	padding: 0.75rem;
+	background: #f6faf9;
+	border-radius: var(--radio);
+	border: 1px dashed var(--color-borde);
+	min-height: 2rem;
+}
+
+.mensaje-vacio {
+	color: var(--color-texto-suave);
+	font-style: italic;
+	padding: 0.5rem 0;
+}
+
+.tabla-detalle {
+	max-width: 560px;
+}
+
+.tabla-detalle .fila-seccion th {
+	background: var(--color-primario-oscuro);
+	border-radius: 0;
+	text-transform: none;
+	letter-spacing: 0;
+	font-size: 0.95rem;
+	padding-top: 0.75rem;
+}
+
+.tabla-detalle .fila-seccion:first-child th {
+	border-radius: 8px 8px 0 0;
+}
+
+.tabla-detalle .celda-accion {
+	padding-top: 1.25rem;
+	text-align: center;
+}
+
+.btn-enlace {
+	display: inline-block;
+	padding: 0.55rem 1.35rem;
+	background: var(--color-primario);
+	color: #fff !important;
+	border-radius: 6px;
+	text-decoration: none !important;
+	font-weight: 600;
+}
+
+.btn-enlace:hover {
+	background: var(--color-primario-oscuro);
+	text-decoration: none !important;
+}
+
+/* —— Pie —— */
+#pie {
+	grid-area: pie;
+	padding: 0.85rem 1.75rem;
+	background: #f6faf9;
+	border-top: 1px solid var(--color-borde);
+	text-align: center;
+}
+
+#pie p {
+	margin: 0;
+	font-size: 0.8rem;
+	color: var(--color-texto-suave);
+}
+
+/* —— jQuery UI (datepicker, diálogo) —— */
+.ui-widget {
+	font-family: 'DM Sans', sans-serif !important;
+}
+
+.ui-dialog {
+	border-radius: var(--radio) !important;
+	border: 1px solid var(--color-borde) !important;
+	box-shadow: var(--sombra-suave) !important;
+	padding: 0 !important;
+}
+
+.ui-dialog .ui-dialog-titlebar {
+	background: var(--color-primario) !important;
+	color: #fff !important;
+	border: none !important;
+	border-radius: var(--radio) var(--radio) 0 0 !important;
+	font-weight: 600 !important;
+}
+
+.ui-dialog .ui-dialog-titlebar-close {
+	filter: brightness(10);
+}
+
+.ui-dialog .ui-dialog-buttonpane button {
+	background: var(--color-primario) !important;
+	color: #fff !important;
+	border: none !important;
+	border-radius: 6px !important;
+	font-weight: 600 !important;
+}
+
+.ui-dialog .ui-dialog-buttonpane button:last-child {
+	background: var(--color-borde) !important;
+	color: var(--color-texto) !important;
+}
+
+.ui-datepicker {
+	border-radius: 8px !important;
+	box-shadow: var(--sombra-tarjeta) !important;
+}
+
+.ui-datepicker-header {
+	background: var(--color-primario) !important;
+	color: #fff !important;
+	border: none !important;
+}
+
+.ui-datepicker .ui-state-active {
+	background: var(--color-primario) !important;
+	color: #fff !important;
+}
+
+.ui-datepicker .ui-state-hover {
+	background: var(--color-acento-suave) !important;
+}
+
+/* —— Responsive —— */
+@media (max-width: 720px) {
+	#contenedor {
+		grid-template-columns: 1fr;
+		grid-template-areas:
+			"cabecera"
+			"menu"
+			"contenido"
+			"pie";
+		margin: 0.75rem;
+	}
+
+	#menu {
+		border-right: none;
+		border-bottom: 1px solid var(--color-borde);
+		padding: 0.75rem;
+	}
+
+	#menu ul {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.35rem;
+	}
+
+	#menu li {
+		margin: 0;
+		flex: 1 1 auto;
+		min-width: 120px;
+	}
+
+	#menu a {
+		text-align: center;
+		padding: 0.5rem 0.65rem;
+		font-size: 0.85rem;
+	}
+
+	#contenido {
+		padding: 1.25rem 1rem 1.5rem;
+	}
+
+	form table tr {
+		display: flex;
+		flex-direction: column;
+		margin-bottom: 0.75rem;
+	}
+
+	form table td {
+		display: block;
+		width: 100% !important;
+		padding: 0.25rem 0;
+	}
+
+	.tarjetas-accion {
+		grid-template-columns: 1fr;
+	}
+}
+
+/* —— Login y sesión —— */
+.pagina-login {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 100vh;
+	padding: 1.5rem;
+}
+
+.login-contenedor {
+	width: 100%;
+	max-width: 420px;
+	background: var(--color-superficie);
+	border-radius: 16px;
+	box-shadow: var(--sombra-suave);
+	padding: 2rem 2rem 1.5rem;
+	border: 1px solid var(--color-borde);
+}
+
+.login-marca {
+	text-align: center;
+	margin-bottom: 1.5rem;
+}
+
+.login-marca h1 {
+	font-family: 'Fraunces', Georgia, serif;
+	font-size: 1.65rem;
+	color: var(--color-primario-oscuro);
+	margin: 0.75rem 0 0.25rem;
+}
+
+.login-marca p {
+	margin: 0;
+	color: var(--color-texto-suave);
+	font-size: 0.9rem;
+}
+
+.logo-clinica--grande {
+	width: 88px;
+	height: 88px;
+	margin: 0 auto;
+}
+
+.login-formulario h2 {
+	font-size: 1.1rem;
+	margin: 0 0 1rem;
+	color: var(--color-texto);
+}
+
+.login-formulario label {
+	display: block;
+	font-size: 0.85rem;
+	font-weight: 600;
+	margin-bottom: 0.35rem;
+	color: var(--color-texto-suave);
+}
+
+.login-formulario input[type="text"],
+.login-formulario input[type="password"] {
+	width: 100%;
+	padding: 0.65rem 0.75rem;
+	margin-bottom: 1rem;
+	border: 1px solid var(--color-borde);
+	border-radius: var(--radio);
+	font: inherit;
+}
+
+.login-formulario button {
+	width: 100%;
+	padding: 0.75rem;
+	border: none;
+	border-radius: var(--radio);
+	background: linear-gradient(135deg, var(--color-primario), var(--color-primario-oscuro));
+	color: #fff;
+	font-weight: 600;
+	font-size: 1rem;
+	cursor: pointer;
+}
+
+.login-formulario button:hover {
+	filter: brightness(1.05);
+}
+
+.login-error {
+	background: #fdecea;
+	color: #b42318;
+	padding: 0.65rem 0.75rem;
+	border-radius: var(--radio);
+	font-size: 0.9rem;
+	margin-bottom: 1rem;
+}
+
+.login-info {
+	background: #e8f4f3;
+	color: var(--color-primario-oscuro);
+	padding: 0.75rem;
+	border-radius: var(--radio);
+	font-size: 0.88rem;
+	line-height: 1.45;
+	margin: 0 0 1rem;
+}
+
+.login-ok {
+	background: #e6f4ee;
+	color: var(--color-exito);
+	padding: 0.65rem 0.75rem;
+	border-radius: var(--radio);
+	font-size: 0.9rem;
+	margin-bottom: 1rem;
+}
+
+.login-aviso {
+	text-align: center;
+	font-size: 0.8rem;
+	color: var(--color-texto-suave);
+	margin: 1.25rem 0 0;
+}
+
+.login-opciones {
+	text-align: center;
+	margin-top: 1.25rem;
+	padding-top: 1.25rem;
+	border-top: 1px solid var(--color-borde);
+}
+
+.login-opciones p {
+	margin: 0 0 0.65rem;
+	font-size: 0.9rem;
+	color: var(--color-texto-suave);
+}
+
+.login-btn-secundario {
+	display: inline-block;
+	width: 100%;
+	padding: 0.7rem 1rem;
+	border-radius: var(--radio);
+	border: 2px solid var(--color-primario);
+	color: var(--color-primario);
+	font-weight: 600;
+	text-decoration: none;
+	text-align: center;
+	background: #fff;
+}
+
+.login-btn-secundario:hover {
+	background: #e8f4f3;
+}
+
+.login-link {
+	color: var(--color-primario);
+	font-weight: 600;
+	text-decoration: none;
+}
+
+.login-link:hover {
+	text-decoration: underline;
+}
+
+.sesion-usuario {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+	gap: 0.25rem;
+	font-size: 0.85rem;
+	z-index: 2;
+}
+
+.sesion-nombre {
+	color: rgba(255, 255, 255, 0.92);
+	font-weight: 500;
+}
+
+.sesion-salir {
+	color: var(--color-acento-suave);
+	text-decoration: none;
+	font-weight: 600;
+}
+
+.sesion-salir:hover {
+	text-decoration: underline;
+}

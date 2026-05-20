@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="Cl�nica Muelitas">
+  <defs>
+    <linearGradient id="fondo" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#e8f4f3"/>
+    </linearGradient>
+    <linearGradient id="esmalte" x1="30%" y1="0%" x2="70%" y2="100%">
+      <stop offset="0%" stop-color="#f8fcfb"/>
+      <stop offset="45%" stop-color="#d8eeec"/>
+      <stop offset="100%" stop-color="#a8d4d2"/>
+    </linearGradient>
+    <linearGradient id="raiz" x1="50%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" stop-color="#2aa8a4"/>
+      <stop offset="100%" stop-color="#145f5d"/>
+    </linearGradient>
+    <filter id="sombra" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#1a7a78" flood-opacity="0.18"/>
+    </filter>
+  </defs>
+  <circle cx="60" cy="60" r="56" fill="url(#fondo)" stroke="#ffffff" stroke-width="4"/>
+  <g filter="url(#sombra)">
+    <!-- Ra�ces (molar inferior) -->
+    <path fill="url(#raiz)" d="M48 78c-1 10 2 16 6 18 4 2 8-2 8-10v-6c0-4-3-6-6-5-3 1-5 4-8 3zm24 0c1 10-2 16-6 18-4 2-8-2-8-10v-6c0-4 3-6 6-5 3 1 5 4 8 3z"/>
+    <path fill="url(#raiz)" opacity="0.9" d="M56 76c0 12 2 18 4 19s4-7 4-19v-8c0-3-2-5-4-5s-4 2-4 5v8z"/>
+    <!-- Corona molar: cinco c�spides -->
+    <path fill="url(#esmalte)" stroke="#1a7a78" stroke-width="1.2" stroke-linejoin="round"
+      d="M60 26
+         C44 26 34 36 34 48c0 5 2 9 5 12l-3 6 8-4 16-2 16 2 8 4-3-6c3-3 5-7 5-12
+         0-12-10-22-26-22zm-14 22c0-6 5-11 14-11s14 5 14 11c0 3-1 5-3 7l-2-4-9 1-9-1-2 4c-2-2-3-4-3-7zm28 0c0-4-3-7-8-7s-8 3-8 7 3 7 8 7 8-3 8-7zm-20 0c0-4 3-7 8-7s8 3 8 7-3 7-8 7-8-3-8-7z"/>
+    <!-- Surcos oclusales -->
+    <path fill="none" stroke="#1a7a78" stroke-width="1" stroke-linecap="round" opacity="0.35"
+      d="M60 38v14M48 44l24 0M52 52l16 0"/>
+    <!-- Brillo esmalte -->
+    <ellipse cx="50" cy="40" rx="6" ry="4" fill="#ffffff" opacity="0.55"/>
+  </g>
+  <path fill="none" stroke="#e8a87c" stroke-width="4.5" stroke-linecap="round"
+    d="M38 94c8 6 36 6 44 0"/>
+  <circle cx="60" cy="60" r="54" fill="none" stroke="#1a7a78" stroke-width="1.5" opacity="0.12"/>
+</svg>
